@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Snap.Hutao.Elevated.Launcher.Runtime</id>
+    <version>1.0.0</version>
+    <authors>qhy040404</authors>
+    <developmentDependency>true</developmentDependency>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/qhy040404/Snap.Hutao.Elevated.Launcher</projectUrl>
+    <description>Elevated Launcher for Snap.Hutao</description>
+    <repository type="git" url="https://github.com/qhy040404/Snap.Hutao.Elevated.Launcher" commit="$commit$" />
+  </metadata>
+  <files>
+    <file src="Snap.Hutao.Elevated.Launcher.exe" target="lib/net8.0/Snap.Hutao.Elevated.Launcher.exe"/>
+  </files>
+</package>

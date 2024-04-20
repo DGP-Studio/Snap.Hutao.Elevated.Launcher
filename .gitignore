@@ -1,0 +1,11 @@
+desktop.ini
+
+*.vcxproj.user
+
+.vs/
+.idea/
+
+bin/
+obj/
+
+*.pdb
