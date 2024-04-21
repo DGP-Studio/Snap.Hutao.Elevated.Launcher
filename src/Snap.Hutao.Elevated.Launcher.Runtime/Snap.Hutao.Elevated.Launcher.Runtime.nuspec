@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Snap.Hutao.Elevated.Launcher.Runtime</id>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <authors>qhy040404</authors>
     <developmentDependency>true</developmentDependency>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

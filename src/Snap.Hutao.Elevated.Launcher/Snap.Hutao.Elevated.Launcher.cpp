@@ -1,34 +1,24 @@
-#define _CRT_SECURE_NO_WARNINGS
-#pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
+#pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:wmainCRTStartup")
 #include <Windows.h>
 #include <string>
 
-static std::wstring strtowstr(const char *str)
-{
-	size_t size = std::strlen(str);
-	std::wstring wstr(size, 0);
-	mbstowcs(&wstr[0], str, size);
-	return wstr;
-}
+const wchar_t* SHELL_FOLDER = LR"(shell:AppsFolder\)";
+const wchar_t* RELEASE_FAMILY_NAME = L"60568DGPStudio.SnapHutao_wbnnev551gwxy";
+const wchar_t* APP = L"!App";
 
-int main(int argc, char* argv[])
+int wmain(int argc, wchar_t* argv[])
 {
-	auto pkgFamilyName = argc == 1 ? L"60568DGPStudio.SnapHutao_wbnnev551gwxy" : strtowstr(argv[1]);
-	auto lpFile = L"shell:AppsFolder\\" + pkgFamilyName + L"!App";
+	std::wstring pkgFamilyName = argc == 1 ? RELEASE_FAMILY_NAME : argv[1];
+	std::wstring lpFile = SHELL_FOLDER + pkgFamilyName + APP;
 
-	SHELLEXECUTEINFO sei{};
-	sei.cbSize = sizeof(SHELLEXECUTEINFO);
+	SHELLEXECUTEINFO sei;
+	sei.cbSize = sizeof(sei);
 	sei.fMask = SEE_MASK_NOCLOSEPROCESS;
-	sei.hInstApp = NULL;
-	sei.hwnd = NULL;
-	sei.lpDirectory = NULL;
 	sei.lpFile = lpFile.c_str();
-	sei.lpParameters = L"";
 	sei.lpVerb = L"runas";
 	sei.nShow = SW_SHOW;
-	ShellExecuteEx(&sei);
-	if (sei.hProcess != 0)
-	{
-		CloseHandle(sei.hProcess);
-	}
+	bool ret = ShellExecuteEx(&sei);
+	CloseHandle(sei.hProcess);
+
+	return 0;
 }
